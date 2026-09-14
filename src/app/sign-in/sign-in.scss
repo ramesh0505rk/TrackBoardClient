@@ -30,7 +30,6 @@
         background: linear-gradient(45deg, #f8aac0, #a6aaf8);
         background-clip: text;
         font-weight: 900;
-        // font-style: italic;
     }
 
     p {
@@ -56,6 +55,12 @@
             text-decoration: underline;
         }
     }
+
+    button{
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+    }
 }
 
 p {
@@ -71,27 +76,27 @@ p {
 
     .form-control {
         border-radius: 0;
-        background-color: #1e1e1e;
+        // background-color: #1e1e1e;
+        border: 0.1px solid rgba(128, 128, 128, 0.2);
+        background-color: #111111;
         border-color: rgba(128, 128, 128, 0.2);
         color: #ffffff;
         box-shadow: none;
-        outline: 1px solid rgba(255, 255, 255, 0.4);
-        outline-offset: -1px;
         position: relative; // keep this — z-index needs a positioned element
 
         &:-webkit-autofill,
         &:-webkit-autofill:hover,
         &:-webkit-autofill:focus,
         &:-webkit-autofill:active {
-            -webkit-box-shadow: 0 0 0 1000px #1e1e1e inset !important;
+            // -webkit-box-shadow: 0 0 0 1000px #1e1e1e inset !important;
+            -webkit-box-shadow: 0 0 0 1000px #111111 inset !important;
             -webkit-text-fill-color: #ffffff !important;
             caret-color: #ffffff;
             transition: background-color 5000s ease-in-out 0s;
         }
 
         &:focus {
-            outline: 1px solid rgb(1, 97, 214);
-            outline-offset: -1px;
+            border: 0.1px solid rgb(1, 97, 214);
             z-index: 2; // only the focused field rises above its neighbor
         }
     }
@@ -119,7 +124,7 @@ label {
 .right-arrow-next {
     width: 0.6rem;
     height: 0.6rem;
-    margin-top:-2px;
+    margin-top: -2px;
 }
 
 .submit-btn {

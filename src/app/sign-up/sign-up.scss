@@ -1,0 +1,150 @@
+.signup-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #111111;
+    padding: 1rem 0;
+}
+
+.signup-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 35%;
+    min-height: 85vh;
+    border: 0.1px solid rgb(128, 128, 128, 0.2);
+    border-radius: 1.5rem;
+    padding: 3rem;
+    gap: 5rem;
+}
+
+.content-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    .logo {
+        color: transparent;
+        background: linear-gradient(45deg, #f8aac0, #a6aaf8);
+        background-clip: text;
+        font-weight: 900;
+    }
+
+    p {
+        color: #ffffff;
+        font-weight: 400;
+        margin-bottom: 1rem;
+    }
+}
+
+p {
+    margin: 0;
+}
+
+.form-floating {
+    margin-bottom: 0; // no gap between fields
+
+    &:not(:first-child) {
+        margin-top: -1px; // collapse the shared border into one line
+    }
+
+    .form-control {
+        border-radius: 0;
+        // background-color: #1e1e1e;
+        border: 0.1px solid rgba(128, 128, 128, 0.2);
+        background-color: #111111;
+        border-color: rgba(128, 128, 128, 0.2);
+        color: #ffffff;
+        box-shadow: none;
+        position: relative; // keep this — z-index needs a positioned element
+
+        &:-webkit-autofill,
+        &:-webkit-autofill:hover,
+        &:-webkit-autofill:focus,
+        &:-webkit-autofill:active {
+            // -webkit-box-shadow: 0 0 0 1000px #1e1e1e inset !important;
+            -webkit-box-shadow: 0 0 0 1000px #111111 inset !important;
+            -webkit-text-fill-color: #ffffff !important;
+            caret-color: #ffffff;
+            transition: background-color 5000s ease-in-out 0s;
+        }
+
+        &:focus {
+            border: 0.1px solid rgb(1, 97, 214);
+            z-index: 2; // only the focused field rises above its neighbor
+        }
+    }
+
+    &:first-child .form-control {
+        border-top-left-radius: 0.75rem;
+        border-top-right-radius: 0.75rem;
+    }
+
+    &:last-child .form-control {
+        border-bottom-left-radius: 0.75rem;
+        border-bottom-right-radius: 0.75rem;
+    }
+}
+
+.form-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+
+    div {
+        width: 100%;
+    }
+}
+
+label {
+    color: #ffffff71;
+}
+
+.submit-btn {
+    background: #a6aaf8d2;
+    color: #ffffff;
+    border: none;
+    border-radius: 0.60rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    width: 80%;
+    font-weight: 600;
+    transition: background 0.3s ease-in-out;
+
+    &:hover {
+        background: #a6aaf8;
+    }
+}
+
+.content-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.1rem;
+
+    p{
+        color: #ffffff;
+        font-size: 0.9rem;
+        cursor: pointer;
+    }
+    a {
+        color: #a6aaf8;
+        font-size: 0.9rem;
+        cursor: pointer;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    button {
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+    }
+}

@@ -6,7 +6,7 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-sign-in',
-  imports: [ReactiveFormsModule,CommonModule],
+  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './sign-in.html',
   styleUrl: './sign-in.scss',
 })
@@ -26,7 +26,11 @@ export class SignIn implements OnInit {
     });
   }
 
-  onSubmit(){
-    
+  onSignUpClick() {
+    this.router.navigate(['/signup']);
+  }
+
+  onSubmit() {
+
   }
 }
