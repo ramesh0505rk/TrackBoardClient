@@ -1,5 +1,40 @@
 <div class="signin-container">
-    <form [formGroup]="signInForm">
-        
-    </form>
+    <div class="signin-card">
+        <div class="content-header">
+            <h1 class="logo">Track Board</h1>
+            <p>Please sign in to your account to continue</p>
+        </div>
+        <div class="content-body">
+            <form [formGroup]="signInForm" (ngSubmit)="onSubmit()">
+                <div class="form-floating">
+                    <input type="text" formControlName="userName" class="form-control" id="floatingInput"
+                        placeholder="Email or username">
+                    <label for="floatingInput">Email or username</label>
+                </div>
+                <div class="form-floating">
+                    <input type="password" formControlName="password" class="form-control" id="floatingPassword"
+                        placeholder="Password">
+                    <label for="floatingPassword">Password</label>
+                    <button class="submit-btn p-0" type="submit">
+                        <img class="right-arrow" src="assets/icons/right-arrow.svg">
+                    </button>
+                </div>
+            </form>
+        </div>
+        <div class="content-footer">
+            <a>Create new account <img src="assets/icons/right-arrow-next.svg" class="right-arrow-next"></a>
+            <a>Forgot password?</a>
+        </div>
+    </div>
 </div>
+
+<!-- @if (signInForm.get('userName')?.invalid && signInForm.get('userName')?.touched) {
+<div class="pt-2 small" style="color: #ffffffc4;">
+    Please enter a valid username.
+</div>
+}
+                    @if (signInForm.get('password')?.invalid && signInForm.get('password')?.touched) {
+<div class="pt-2 small" style="color: #ffffffc4;">
+    Please enter a valid password.
+</div>
+} -->
