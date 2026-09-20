@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { Router } from '@angular/router';
 import { Auth } from '../services/auth';
 import { CommonModule } from '@angular/common';
+import { UserService } from '../services/user-service';
 
 @Component({
   selector: 'app-sign-in',
@@ -12,8 +13,9 @@ import { CommonModule } from '@angular/common';
 })
 export class SignIn implements OnInit {
   signInForm!: FormGroup;
+  isLoading: boolean = false;
 
-  constructor(private fb: FormBuilder, private router: Router, private authService: Auth) { }
+  constructor(private fb: FormBuilder, private router: Router, private authService: Auth, private userService: UserService) { }
 
   ngOnInit() {
     this.intializeSignInForm();
@@ -31,6 +33,10 @@ export class SignIn implements OnInit {
   }
 
   onSubmit() {
-
+    this.isLoading = true;
+    if (this.signInForm.invalid) {
+      this.isLoading = false;
+      this.signInForm.markAllAsTouched();
+    }
   }
 }
