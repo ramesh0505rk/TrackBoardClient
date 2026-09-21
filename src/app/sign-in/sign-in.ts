@@ -23,7 +23,7 @@ export class SignIn implements OnInit {
 
   intializeSignInForm() {
     this.signInForm = this.fb.group({
-      userName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(25), Validators.pattern('^[a-zA-Z][a-zA-Z0-9_.-]*$')]],
+      userName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(25)]],//, Validators.pattern('^[a-zA-Z][a-zA-Z0-9_.-]*$')
       password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(20)]]
     });
   }
@@ -37,6 +37,21 @@ export class SignIn implements OnInit {
     if (this.signInForm.invalid) {
       this.isLoading = false;
       this.signInForm.markAllAsTouched();
+      return;
     }
+
+    const { userName, password } = this.signInForm.value;
+
+    this.userService.getTokenBySignIn(userName, password).subscribe({
+      next: (res: any) => {
+        localStorage.setItem('accessToken', res.accessToken);
+        this.authService.checkAuthStatus();
+        this.router.navigate(['/home']);
+        this.isLoading = false;
+      },
+      error: (err: any) => {
+        this.isLoading = false;
+      }
+    })
   }
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Auth } from '../services/auth';
 
@@ -20,16 +20,19 @@ export class SignUp implements OnInit {
 
   initializeSignUpForm() {
     this.signUpForm = this.fb.group({
-      userName: [''],
-      firstName: [''],
+      userName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(25)]],
+      firstName: ['', [Validators.required]],
       lastName: [''],
-      email: [''],
-      password: ['']
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(20)]]
     });
   }
 
   onSubmit() {
-
+    if (this.signUpForm.invalid) {
+      this.signUpForm.markAllAsTouched();
+      return;
+    }
   }
 
   onSignInClick() {
