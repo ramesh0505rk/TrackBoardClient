@@ -32,4 +32,13 @@ export class UserService {
         })
       )
   }
+
+  userNameExists(userName: string) {
+    return this.http.get(`${this.restApiurl}/User/Exists?UserName=${userName}`)
+      .pipe(
+        catchError(err => {
+          return throwError(() => err);
+        })
+      );
+  }
 }
