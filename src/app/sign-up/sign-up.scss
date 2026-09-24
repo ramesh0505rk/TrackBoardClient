@@ -12,7 +12,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 35%;
+    width: 45%;
     min-height: 85vh;
     border: 0.1px solid rgb(128, 128, 128, 0.2);
     border-radius: 1.5rem;
@@ -45,14 +45,8 @@ p {
 }
 
 .form-floating {
-    margin-bottom: 0; // no gap between fields
-
-    &:not(:first-child) {
-        margin-top: -1px; // collapse the shared border into one line
-    }
-
     .form-control {
-        border-radius: 0;
+        border-radius: 0.75rem;
         // background-color: #1e1e1e;
         border: 0.1px solid rgba(128, 128, 128, 0.2);
         background-color: #111111;
@@ -74,18 +68,7 @@ p {
 
         &:focus {
             border: 0.1px solid rgb(1, 97, 214);
-            z-index: 2; // only the focused field rises above its neighbor
         }
-    }
-
-    &:first-child .form-control {
-        border-top-left-radius: 0.75rem;
-        border-top-right-radius: 0.75rem;
-    }
-
-    &:last-child .form-control {
-        border-bottom-left-radius: 0.75rem;
-        border-bottom-right-radius: 0.75rem;
     }
 }
 
@@ -109,7 +92,7 @@ label {
     background: #a6aaf8d2;
     color: #ffffff;
     border: none;
-    border-radius: 0.60rem;
+    border-radius: 0.6rem;
     padding: 0.5rem 1rem;
     cursor: pointer;
     width: 80%;
@@ -127,7 +110,7 @@ label {
     align-items: center;
     gap: 0.1rem;
 
-    p{
+    p {
         color: #ffffff;
         font-size: 0.9rem;
         cursor: pointer;
@@ -147,4 +130,8 @@ label {
         background-color: transparent;
         cursor: pointer;
     }
+}
+
+.description {
+    color: #ffffff71;
 }
