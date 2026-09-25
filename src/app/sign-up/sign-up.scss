@@ -68,6 +68,10 @@ p {
             border: 0.1px solid rgb(1, 97, 214);
         }
     }
+
+    .form-control.invalid {
+        border-color: #ff0000c4;
+    }
 }
 
 .form-content {

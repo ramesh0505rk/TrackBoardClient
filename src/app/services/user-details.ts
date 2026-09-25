@@ -17,5 +17,5 @@ export interface UserDetail {
   LastName: string;
   Email: string;
   Role: string;
-  OrgId: string;
+  OrgId: string | null;
 }

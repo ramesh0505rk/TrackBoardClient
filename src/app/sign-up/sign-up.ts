@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, signal } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Auth } from '../services/auth';
@@ -14,11 +14,11 @@ import { debounceTime, distinctUntilChanged, filter, Subscription, switchMap, ta
 })
 export class SignUp implements OnInit, OnDestroy {
   signUpForm!: FormGroup;
-  isCheckingUserName: boolean = false;
-  userNameTaken: boolean = false;
+  isCheckingUserName = signal(false);
+  userNameTaken = signal(false);
   private userNameSub?: Subscription;
 
-  constructor(private fb: FormBuilder, private router: Router, private authService: Auth, private userService: UserService, private cdr: ChangeDetectorRef) { }
+  constructor(private fb: FormBuilder, private router: Router, private authService: Auth, private userService: UserService) { }
 
   ngOnInit() {
     this.initializeSignUpForm();
@@ -37,25 +37,24 @@ export class SignUp implements OnInit, OnDestroy {
 
   listenToUserNameChanges() {
     this.userNameSub = this.signUpForm.get('userName')!.valueChanges.pipe(
-      tap(val => { this.isCheckingUserName = val?.length >= 3; }),
+      tap(val => this.isCheckingUserName.set(val?.length >= 1)),
       debounceTime(400),
       distinctUntilChanged(),
-      tap(val => {
-        this.userNameTaken = false;
-      }),
-      filter(val => val && val.length >= 3),
+      tap(val => this.userNameTaken.set(false)),
+      filter(val => val && val.length >= 1),
       switchMap(val => this.userService.userNameExists(val))
     ).subscribe({
       next: (res: any) => {
-        this.isCheckingUserName = false;
-        this.userNameTaken = !!res;
-        this.cdr.markForCheck();
+        this.isCheckingUserName.set(false);
+        this.userNameTaken.set(!!res);
       },
-      error: () => {
-        this.isCheckingUserName = false;
-        this.cdr.markForCheck();
-      }
+      error: () => this.isCheckingUserName.set(false)
     })
+  }
+
+  hasError(controlName: string): boolean {
+    const control = this.signUpForm.get(controlName);
+    return !!control && control.invalid && (control.touched || control.dirty);
   }
 
   onSubmit() {

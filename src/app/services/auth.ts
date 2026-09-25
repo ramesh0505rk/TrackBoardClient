@@ -9,6 +9,7 @@ import { UserDetailsService, UserDetail } from './user-details';
 export class Auth {
   private tokenExpirationTimer: Subscription | null = null;
   public isAuthenticatedSubject = new BehaviorSubject<boolean>(false);
+  public isAuthorizedSubject = new BehaviorSubject<boolean>(false);
 
   constructor(private router: Router, private userDetailsService: UserDetailsService) {
     this.checkAuthStatus();
@@ -68,6 +69,9 @@ export class Auth {
         OrgId: payload.OrgId
       }
 
+      if (userDetails.OrgId) {
+        this.isAuthorizedSubject.next(true);
+      }
       this.userDetailsService.setUserDetails(userDetails);
 
       if (timeUntilExpire <= 0) {
@@ -87,6 +91,7 @@ export class Auth {
 
   logout() {
     localStorage.removeItem('accessToken');
+    this.isAuthenticatedSubject.next(false);
     this.isAuthenticatedSubject.next(false);
     this.userDetailsService.setUserDetails(null);
 

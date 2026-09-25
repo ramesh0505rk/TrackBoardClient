@@ -12,5 +12,12 @@ export const authGuard: CanActivateFn = () => {
         return false;
     }
 
+    let isAuthorized = authService.isAuthenticatedSubject.getValue();
+
+    if (!isAuthorized) {
+        router.navigate(['/onboarding'])
+        return false;
+    }
+
     return true;
 }
