@@ -6,42 +6,55 @@
         </div>
         <div class="content-body">
             <form class="form-content" [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
-                <div class="form-floating">
-                    <input type="email" formControlName="email" class="form-control" id="floatingEmail"
-                        [ngClass]="{'invalid':hasError('email')}" placeholder="Email">
-                    <label for="floatingEmail">Email</label>
+                <div>
+                    <div class="form-floating">
+                        <input type="email" formControlName="email" class="form-control" id="floatingEmail"
+                            [ngClass]="{'invalid':hasError('email')}" placeholder="Email">
+                        <label for="floatingEmail">Email</label>
+                    </div>
+                    <div *ngIf="signUpForm.get('email')?.invalid && signUpForm.get('email')?.touched"
+                        class="pt-2 val-errors">
+                        <i class="bi bi-info-circle"></i> Please enter a valid email address.
+                    </div>
+                    <div class="pt-1">
+                        <small class="description">This email will be your Track Board account</small>
+                    </div>
                 </div>
-                <div *ngIf="signUpForm.get('email')?.invalid && signUpForm.get('email')?.touched"
-                    class="pt-2 val-errors">
-                    <i class="bi bi-info-circle"></i> Please enter a valid email address.
+                <div>
+                    <div class="form-floating">
+                        <input type="password" formControlName="password" class="form-control" id="floatingPassword"
+                            [ngClass]="{'invalid':hasError('password')}" placeholder="Password">
+                        <label for="floatingPassword">Password</label>
+                    </div>
+                    <div *ngIf="signUpForm.get('password')?.invalid && signUpForm.get('password')?.touched"
+                        class="pt-2 val-errors">
+                        <i class="bi bi-info-circle"></i> Password must be at least 6 characters long.
+                    </div>
+                    <div class="pt-1">
+                        <small class="description">Your password must have 6 or more characters, upper and lowercase
+                            letters
+                            and at least one number.</small>
+                    </div>
                 </div>
-                <small class="description">This email will be your Track Board account</small>
-                <div class="form-floating">
-                    <input type="password" formControlName="password" class="form-control" id="floatingPassword"
-                        [ngClass]="{'invalid':hasError('password')}" placeholder="Password">
-                    <label for="floatingPassword">Password</label>
+                <div>
+                    <div class="form-floating" style="position: relative;">
+                        <input type="text" formControlName="userName" class="form-control" id="floatingInput"
+                            [ngClass]="{'invalid':hasError('userName')}" placeholder="Username">
+                        <label for="floatingInput">Username</label>
+                        <div *ngIf="isCheckingUserName()" class="loader" style="position: absolute;"></div>
+                    </div>
+                    <div *ngIf="signUpForm.get('userName')?.invalid && signUpForm.get('userName')?.touched"
+                        class="pt-2 val-errors">
+                        <i class="bi bi-info-circle"></i> Please enter a valid user name.
+                    </div>
+                    <div *ngIf="userNameTaken()" class="pt-2 val-errors">
+                        <i class="bi bi-info-circle"></i> This username is already taken.
+                    </div>
+                    <div class="pt-1">
+                        <small class="description">Start with a letter, 3-25 characters (letters, numbers, _ . -
+                            allowed).</small>
+                    </div>
                 </div>
-                <div *ngIf="signUpForm.get('password')?.invalid && signUpForm.get('password')?.touched"
-                    class="pt-2 val-errors">
-                    <i class="bi bi-info-circle"></i> Password must be at least 6 characters long.
-                </div>
-                <small class="description">Your password must have 6 or more characters, upper and lowercase letters
-                    and at least one number.</small>
-                <div class="form-floating" style="position: relative;">
-                    <input type="text" formControlName="userName" class="form-control" id="floatingInput"
-                        [ngClass]="{'invalid':hasError('userName')}" placeholder="Username">
-                    <label for="floatingInput">Username</label>
-                    <div *ngIf="isCheckingUserName()" class="loader" style="position: absolute;"></div>
-                </div>
-                <div *ngIf="signUpForm.get('userName')?.invalid && signUpForm.get('userName')?.touched"
-                    class="pt-2 val-errors">
-                    <i class="bi bi-info-circle"></i> Please enter a valid user name.
-                </div>
-                <div *ngIf="userNameTaken()" class="pt-2 val-errors">
-                    <i class="bi bi-info-circle"></i> This username is already taken.
-                </div>
-                <small class="description">Start with a letter, 3-25 characters (letters, numbers, _ . -
-                    allowed).</small>
                 <div class="form-floating">
                     <input type="text" formControlName="firstName" class="form-control" id="floatingFirstName"
                         placeholder="First Name">

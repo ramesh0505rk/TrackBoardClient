@@ -3,8 +3,9 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
     background-color: #111111;
+    padding: 1rem 0;
 }
 
 .signin-card {
@@ -56,7 +57,7 @@
         }
     }
 
-    button{
+    button {
         border: none;
         background-color: transparent;
         cursor: pointer;

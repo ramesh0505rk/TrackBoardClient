@@ -37,11 +37,11 @@ export class SignUp implements OnInit, OnDestroy {
 
   listenToUserNameChanges() {
     this.userNameSub = this.signUpForm.get('userName')!.valueChanges.pipe(
-      tap(val => this.isCheckingUserName.set(val?.length >= 1)),
+      tap(val => this.isCheckingUserName.set(val?.length >= 3)),
       debounceTime(400),
       distinctUntilChanged(),
       tap(val => this.userNameTaken.set(false)),
-      filter(val => val && val.length >= 1),
+      filter(val => val && val.length >= 3),
       switchMap(val => this.userService.userNameExists(val))
     ).subscribe({
       next: (res: any) => {
