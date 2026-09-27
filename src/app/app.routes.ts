@@ -6,7 +6,7 @@ export const routes: Routes = [
     {
         path: 'home',
         loadComponent: () => import('./home/home').then(m => m.Home),
-        canActivate: [authGuard],
+        canActivate: [authGuard()],
         children: [
             { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
             { path: 'dashboard', loadComponent: () => import('./home/dashboard/dashboard').then(m => m.Dashboard) },
@@ -14,5 +14,5 @@ export const routes: Routes = [
     },
     { path: 'signin', loadComponent: () => import('./sign-in/sign-in').then(m => m.SignIn) },
     { path: 'signup', loadComponent: () => import('./sign-up/sign-up').then(m => m.SignUp) },
-    { path: 'onboarding', loadComponent: () => import('./onboarding/onboarding').then(m => m.Onboarding) }
+    { path: 'onboarding', loadComponent: () => import('./onboarding/onboarding').then(m => m.Onboarding), canActivate: [authGuard({ requireAuthorization: false })] }
 ];
