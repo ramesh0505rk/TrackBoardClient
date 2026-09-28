@@ -14,5 +14,11 @@ export const routes: Routes = [
     },
     { path: 'signin', loadComponent: () => import('./sign-in/sign-in').then(m => m.SignIn) },
     { path: 'signup', loadComponent: () => import('./sign-up/sign-up').then(m => m.SignUp) },
-    { path: 'onboarding', loadComponent: () => import('./onboarding/onboarding').then(m => m.Onboarding), canActivate: [authGuard({ requireAuthorization: false })] }
+    {
+        path: 'onboarding',
+        loadComponent: () => import('./onboarding/onboarding').then(m => m.Onboarding),
+        canActivate: [authGuard({ requireAuthorization: false })]
+    },
+    // { path: 'register', loadComponent: () => import('./onboarding/register/register').then(m => m.Register) },
+    // { path: 'join', loadComponent: () => import('./onboarding/join/join').then(m => m.Join) }
 ];

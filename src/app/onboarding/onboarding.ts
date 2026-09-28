@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-onboarding',
@@ -6,4 +7,13 @@ import { Component } from '@angular/core';
   templateUrl: './onboarding.html',
   styleUrl: './onboarding.scss',
 })
-export class Onboarding {}
+export class Onboarding {
+  constructor(private router: Router) { }
+
+  onRegister() {
+    this.router.navigate(['/register'])
+  }
+  onJoin() {
+    
+  }
+}

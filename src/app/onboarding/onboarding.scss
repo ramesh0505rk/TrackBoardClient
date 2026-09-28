@@ -1,6 +1,7 @@
 .onboard-container {
     min-height: 100vh;
     background-color: #111111;
+    color: #ffffff;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -16,37 +17,17 @@
 
 .content-body {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 45%;
-    gap: 0.5rem;
+    min-width: 60%;
+    gap: 2rem;
+    
+    // background-color: #a6aaf8;
 }
 
 h1,
 p {
     color: #ffffff;
-}
-
-.divider {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    // background-color: red;
-
-    &::before,
-    &::after {
-        content: "";
-        flex: 1;
-        height: 1px;
-        background-color: #a6aaf8;
-    }
-
-    span {
-        font-size: 1rem;
-        color: #ffffff;
-        font-family: "Trap";
-    }
 }
 
 .logo {
@@ -57,23 +38,29 @@ p {
     font-family: "Trap";
 }
 
-button {
-    border: none;
-    box-shadow: none;
-    width: 50%;
-
-    background-color: #a6aaf8;
-    background: linear-gradient(45deg, #f8aac0, #a6aaf8);
-    padding: 0.5rem 0;
+.create-org,
+.join-org {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    padding: 1rem;
+    border: 2px solid rgb(128, 128, 128, 0.2);
+    width: 60%;
     border-radius: 0.5rem;
-    border-radius: 50px;
-    font-size: 1rem;
-    color: #ffffff;
-    font-weight: 500;
-    transition: transform 0.2s ease-in-out;
-    transform-origin: center;
+    cursor: pointer;
+    transition: border 0.2s ease-in-out, transform 0.2s ease-in-out;
 
-    &:hover {
-        transform: scale(1.04);
+    &:hover{
+        border: 2px solid #a6aaf8;
+        transform: scale(1.1);
+    }
+
+    h3{
+        color: #a6aaf8;
+        font-family: 'Trap';
+    }
+
+    p{
+        color: #ffffffa5;
     }
 }
