@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Register } from './register/register';
 
 @Component({
   selector: 'app-onboarding',
@@ -8,12 +10,15 @@ import { Router } from '@angular/router';
   styleUrl: './onboarding.scss',
 })
 export class Onboarding {
-  constructor(private router: Router) { }
+  constructor(private router: Router, private modalService: NgbModal) { }
 
   onRegister() {
-    this.router.navigate(['/register'])
+    const modalRef = this.modalService.open(Register, {
+      size:'lg',
+    })
   }
+  
   onJoin() {
-    
+
   }
 }

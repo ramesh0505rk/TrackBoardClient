@@ -1,0 +1,107 @@
+.register-container {
+    background-color: #111111;
+    border: 1px solid rgb(128, 128, 128, 0.2);
+    color: #ffffff;
+    border-radius: 10px;
+
+    h3 {
+        font-family: "Trap";
+        color: #a6aaf8;
+    }
+}
+
+.content-header-wrapper,
+.content-body-wrapper {
+    padding: 1rem 1rem 0;
+}
+
+.content-footer {
+    display: flex;
+    justify-content: end;
+    padding: 1rem;
+    gap: 1rem;
+}
+
+.content-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid rgb(128, 128, 128, 0.2);
+}
+
+.content-body {
+    padding-bottom: 1rem;
+    border-bottom: 2px solid rgb(128, 128, 128, 0.2);
+}
+
+.form-floating {
+    .form-control {
+        border-radius: 0.75rem;
+        border: 0.1px solid rgba(128, 128, 128, 0.2);
+        background-color: #111111;
+        border-color: rgba(128, 128, 128, 0.2);
+        color: #ffffff;
+        box-shadow: none;
+
+        &:-webkit-autofill,
+        &:-webkit-autofill:hover,
+        &:-webkit-autofill:focus,
+        &:-webkit-autofill:active {
+            -webkit-box-shadow: 0 0 0 1000px #111111 inset !important;
+            -webkit-text-fill-color: #ffffff !important;
+            caret-color: #ffffff;
+            transition: background-color 5000s ease-in-out 0s;
+        }
+
+        &:focus {
+            border: 0.1px solid rgb(1, 97, 214);
+        }
+    }
+
+    .form-control.invalid {
+        border-color: #ff0000c4;
+    }
+}
+
+label {
+    color: #ffffff71;
+}
+
+.divider {
+    border-top: 1px solid grey;
+}
+
+img {
+    width: 20px;
+    height: 20px;
+}
+
+button {
+    background-color: transparent;
+    border: none;
+}
+
+.description {
+    color: #ffffff71;
+}
+.val-errors {
+    font-size: 12px;
+    color: #ff0000c4;
+    display: block;
+}
+
+.cancel-btn {
+    padding: 0.5rem 1rem;
+    color: #a6aaf8;
+    border: 1px solid #a6aaf8;
+    border-radius: 0.5rem;
+}
+
+.register-btn {
+    padding: 0.5rem 1rem;
+    color: #ffffff;
+    background: linear-gradient(45deg, #f8aac0, #a6aaf8);
+    background: #a6aaf8;
+    border-radius: 0.5rem;
+}

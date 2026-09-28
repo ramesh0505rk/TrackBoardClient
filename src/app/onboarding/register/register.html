@@ -1,1 +1,38 @@
-<p>register works!</p>
+<div class="register-container">
+    <div class="content-header-wrapper">
+        <div class="content-header">
+            <h3>Register your organization</h3>
+            <button (click)="activeModal.close('closed')">
+                <img src="assets/icons/close.svg" />
+            </button>
+        </div>
+    </div>
+    <div class="content-body-wrapper">
+        <div class="content-body">
+            <form class="form-content" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                <div class="form-floating">
+                    <input type="text" formControlName="orgName" class="form-control" id="floatingOrgName"
+                        [ngClass]="{'invalid':hasError('orgName')}" placeholder="Organization Name">
+                    <label for="floatingOrgName">Organization Name</label>
+                </div>
+                @if (registerForm.get('orgName')?.invalid && registerForm.get('orgName')?.touched) {
+                <div class="pt-2 val-errors">
+                    <i class="bi bi-info-circle"></i> Please enter a valid organization name.
+                </div>
+                }
+                <div class="pt-1">
+                    <small class="description">Enter your organization name using only letters and spaces (minimum 3
+                        characters).</small>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="content-footer">
+        <button class="cancel-btn" (click)="activeModal.close('closed')">
+            Cancel
+        </button>
+        <button class="register-btn">
+            Register
+        </button>
+    </div>
+</div>
