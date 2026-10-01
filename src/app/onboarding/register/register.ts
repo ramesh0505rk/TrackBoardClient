@@ -2,6 +2,8 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { UserDetailsService } from '../../services/user-details';
+import { OrganizationService } from '../../services/organization-service';
 
 @Component({
   selector: 'app-register',
@@ -13,7 +15,9 @@ export class Register implements OnInit {
 
   registerForm!: FormGroup;
 
-  constructor(public activeModal: NgbActiveModal, private fb: FormBuilder) { }
+  constructor(public activeModal: NgbActiveModal, private fb: FormBuilder, private userDetailsService: UserDetailsService,
+    private orgService: OrganizationService
+  ) { }
 
   ngOnInit(): void {
     this.initializeRegisterForm();
@@ -37,6 +41,15 @@ export class Register implements OnInit {
   }
 
   onSubmit() {
+    const orgName = this.registerForm.get('orgName')?.value;
+    const userId = this.userDetailsService.userDetails?.UserId!;
+    this.orgService.registerOrganization(orgName, userId).subscribe({
+      next: (res) => {
 
+      },
+      error: (err: any) => {
+
+      }
+    })
   }
 }
