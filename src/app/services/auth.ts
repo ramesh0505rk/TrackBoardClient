@@ -60,7 +60,7 @@ export class Auth {
       const timeUntilExpire = expirationTime - Date.now();
 
       const userDetails: UserDetail = {
-        UserId: payload.UserID,
+        UserId: payload.UserId,
         UserName: payload.UserName,
         FirstName: payload.FirstName,
         LastName: payload.LastName,

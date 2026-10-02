@@ -39,7 +39,7 @@
                 <div>
                     <div class="form-floating" style="position: relative;">
                         <input type="text" formControlName="userName" class="form-control" id="floatingInput"
-                            [ngClass]="{'invalid':hasError('userName')}" placeholder="Username">
+                            [ngClass]="{'invalid':hasError('userName') || userNameTaken()}" placeholder="Username">
                         <label for="floatingInput">Username</label>
                         <div *ngIf="isCheckingUserName()" class="loader" style="position: absolute;"></div>
                     </div>

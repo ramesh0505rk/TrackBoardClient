@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { UserDetailsService } from '../../services/user-details';
 import { OrganizationService } from '../../services/organization-service';
+import { Auth } from '../../services/auth';
 
 @Component({
   selector: 'app-register',
@@ -16,7 +17,7 @@ export class Register implements OnInit {
   registerForm!: FormGroup;
 
   constructor(public activeModal: NgbActiveModal, private fb: FormBuilder, private userDetailsService: UserDetailsService,
-    private orgService: OrganizationService
+    private orgService: OrganizationService, private authService: Auth
   ) { }
 
   ngOnInit(): void {
@@ -43,9 +44,14 @@ export class Register implements OnInit {
   onSubmit() {
     const orgName = this.registerForm.get('orgName')?.value;
     const userId = this.userDetailsService.userDetails?.UserId!;
+    console.log('user details',this.userDetailsService.userDetails);
     this.orgService.registerOrganization(orgName, userId).subscribe({
-      next: (res) => {
-
+      next: (res: any) => {
+        if (res.accessToken) {
+          localStorage.setItem('accessToken', res.accessToken);
+        }
+        this.authService.checkAuthStatus();
+        this.activeModal.close('created');
       },
       error: (err: any) => {
 

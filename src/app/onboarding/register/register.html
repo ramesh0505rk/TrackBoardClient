@@ -8,8 +8,8 @@
         </div>
     </div>
     <div class="content-body-wrapper">
-        <div class="content-body">
-            <form class="form-content" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <form class="form-content" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+            <div class="content-body">
                 <div class="form-floating">
                     <input type="text" formControlName="orgName" class="form-control" id="floatingOrgName"
                         [ngClass]="{'invalid':hasError('orgName')}" placeholder="Organization Name">
@@ -24,15 +24,15 @@
                     <small class="description">Enter your organization name using only letters and spaces (minimum 3
                         characters).</small>
                 </div>
-            </form>
-        </div>
-    </div>
-    <div class="content-footer">
-        <button class="cancel-btn" (click)="activeModal.close('closed')">
-            Cancel
-        </button>
-        <button class="register-btn">
-            Register
-        </button>
+            </div>
+            <div class="btn-container">
+                <button class="cancel-btn" (click)="activeModal.close('closed')">
+                    Cancel
+                </button>
+                <button class="register-btn">
+                    Register
+                </button>
+            </div>
+        </form>
     </div>
 </div>

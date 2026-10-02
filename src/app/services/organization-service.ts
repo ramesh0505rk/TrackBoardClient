@@ -11,8 +11,8 @@ export class OrganizationService {
 
   constructor(private readonly http: HttpClient) { }
 
-  registerOrganization(orgName: string, userId: string) {
-    var request = { orgName, userId };
+  registerOrganization(organizationName: string, userId: string) {
+    var request = { organizationName, userId };
 
     return this.http.post(`${this.restApiUrl}/Organization/Register`, request)
       .pipe(
