@@ -1,1 +1,7 @@
-<router-outlet />
+<div class="layout">
+    <app-top-bar class="top-bar"></app-top-bar>
+    <app-side-bar class="side-bar"></app-side-bar>
+    <div class="main-content" [ngClass]="{'collapsed': isSideBarCollapsed}">
+        <router-outlet />
+    </div>
+</div>
