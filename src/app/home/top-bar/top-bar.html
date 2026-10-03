@@ -1,1 +1,13 @@
-<p>top-bar works!</p>
+<div class="topbar d-flex align-items-center justify-content-between">
+    <div class="topbar-left-actions d-flex justify-content-start align-items-center gap-2">
+        <div class="topbar-logo-container d-flex align-items-center justify-content-center">
+            <img class="logo" src="assets/icons/TrackBoard.svg" />
+        </div>
+        <button class="collapse-btn" (click)="onCollapseSideBar()">
+            <img [src]="!isSideBarCollapsed ? 'assets/icons/sidebar-left-light.svg' : 
+                'assets/icons/sidebar-right-light.svg'" />
+        </button>
+    </div>
+    <div class="topbar-center-actions"></div>
+    <div class="topbar-right-actions"></div>
+</div>
